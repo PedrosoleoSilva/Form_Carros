@@ -47,7 +47,6 @@ function App() {
 
 
   const aoNovoCarroAdicionado = (carro) =>{
-    console.log(carro)
     setCarros([...carros, carro]) //pego carros ja cadastrado e cadastro o novo nessa lista
   }
   return (

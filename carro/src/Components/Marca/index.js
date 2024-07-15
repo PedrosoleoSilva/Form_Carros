@@ -10,7 +10,7 @@ const Marca = (props) => {
      (props.carros.length > 0) ? <section className='marca' style={secundaria}>
             <h3 style={primaria}>{props.nome}</h3>
             <div className='marcas'>
-                {props.carros.map(carro => <Carro  nome={carro.nome}  marca={carro.marca} imagem={carro.imagem}/>)}
+                {props.carros.map(carro => <Carro  corDeFundo={props.corPrimaria} key={carro.nome}  nome={carro.nome}  marca={carro.marca} imagem={carro.imagem}/>)}
             </div>
         </section>
         : ''

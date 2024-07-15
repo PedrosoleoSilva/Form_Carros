@@ -26,6 +26,7 @@ const aoSalvar = (evento) =>{
     setCor('')
     setNome('')
     setImagem('')
+    setMarca('')
 }
     return (
         <section className='formulario'>
