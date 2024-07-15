@@ -11,14 +11,7 @@ const Formulario = (props) => {
     const [imagem, setImagem] = useState('')
     const [marca, setMarca] = useState('')
 
-const carros = [
-    'Fiat',
-    'Chevrolet',
-    'Volkswagen',
-    'Toyota',
-    'Hyundai',
-    'Ford'
-]
+
 
 const aoSalvar = (evento) =>{
     evento.preventDefault()
@@ -29,6 +22,10 @@ const aoSalvar = (evento) =>{
         imagem, 
         marca
     })
+    setAno('')
+    setCor('')
+    setNome('')
+    setImagem('')
 }
     return (
         <section className='formulario'>
@@ -63,7 +60,7 @@ const aoSalvar = (evento) =>{
                  />
                 <ListaSuspensa 
                     obrigatorio={true} 
-                    itens={carros}
+                    itens={props.carros}
                     valor={marca}
                     aoAlterado={valor => setMarca(valor)}
                 />
