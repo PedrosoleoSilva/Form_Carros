@@ -2,10 +2,16 @@ import Botao from '../Botao';
 import CampoTexto from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import './Formulario.css'
+import {useState} from 'react'
 
-const Formulario = () => {
+const Formulario = (props) => {
+    const [nome, setNome] = useState('')
+    const [cor, setCor] = useState('')
+    const [ano, setAno] = useState('')
+    const [imagem, setImagem] = useState('')
+    const [marca, setMarca] = useState('')
 
-const time = [
+const carros = [
     'Fiat',
     'Chevrolet',
     'Volkswagen',
@@ -16,17 +22,51 @@ const time = [
 
 const aoSalvar = (evento) =>{
     evento.preventDefault()
-    console.log('Form foi submetido')
+    props.aoCarroCadastrado({
+        nome, 
+        cor,
+        ano,
+        imagem, 
+        marca
+    })
 }
     return (
         <section className='formulario'>
             <form onSubmit={aoSalvar}>
                 <h2>Preencha o Card para Realizar o Cadastro de Carro</h2>
-                <CampoTexto obrigatorio={true} label="nome"  placeholder="Digite Nome do Carro"/>
-                <CampoTexto obrigatorio={true}  label="Cor"  placeholder="Digite Cor do Carro"/>
-                <CampoTexto obrigatorio={true}  label="Ano"  placeholder="Digite Ano do Carro"/>
-                <CampoTexto label="Imagem"  placeholder="Digite o endereço da imagem"/>
-                <ListaSuspensa obrigatorio={true}  itens={time} />
+                <CampoTexto 
+                    obrigatorio={true} 
+                    label="nome"  
+                    placeholder="Digite Nome do Carro"
+                    valor={nome}
+                    aoAlterado ={valor => setNome(valor)}
+                />
+                <CampoTexto 
+                    obrigatorio={true} 
+                    label="Cor"  
+                    placeholder="Digite Cor do Carro"
+                    valor={cor}
+                    aoAlterado ={valor => setCor(valor)}
+                 />
+                <CampoTexto 
+                    obrigatorio={true}  
+                    label="Ano" 
+                    placeholder="Digite Ano do Carro"
+                    valor={ano}
+                    aoAlterado ={valor => setAno(valor)}
+                 />
+                <CampoTexto
+                    label="Imagem"  
+                    placeholder="Digite o endereço da imagem"
+                    valor={imagem}
+                    aoAlterado ={valor => setImagem(valor)}
+                 />
+                <ListaSuspensa 
+                    obrigatorio={true} 
+                    itens={carros}
+                    valor={marca}
+                    aoAlterado={valor => setMarca(valor)}
+                />
                 <Botao>
                      Cadastrar Carro
                 </Botao>
